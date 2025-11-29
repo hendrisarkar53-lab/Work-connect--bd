@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Work Connect BD</title>
+
+<!-- ⭐ Social Share Thumbnail (Facebook + WhatsApp + Messenger + Twitter) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Work Connect BD – Driver & Labour Finder App">
+<meta property="og:description" content="ড্রাইভার ও লেবার খোঁজার সবচেয়ে সহজ প্ল্যাটফর্ম। যেকোনো সময় দেখুন, কল করুন। প্রথম মাস একদম ফ্রি!">
+<meta property="og:image" content="https://i.ibb.co/4SFVtS1/workconnectbd-thumb.jpg">
+<meta property="og:url" content="https://hendrisarkar53-lab.github.io/Work-connect--bd/">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Work Connect BD – Driver & Labour Finder App">
+<meta name="twitter:description" content="ড্রাইভার ও লেবার খোঁজার সবচেয়ে সহজ প্ল্যাটফর্ম। প্রথম মাস ফ্রি!">
+<meta name="twitter:image" content="https://i.ibb.co/4SFVtS1/workconnectbd-thumb.jpg">
+
+<style>
+body {
+  background:#f2f2f2;
+  padding:15px;
+  font-family:'Poppins',sans-serif;
+}
+
+.app-box {
+  max-width: 850px;
+  margin: auto;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 18px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.15);
+}
+
+.app-header {
+  text-align: center;
+}
+
+.app-logo {
+  width: 120px;
+  border-radius: 26px;
+}
+
+.app-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+.app-sub {
+  font-size: 16px;
+  color: #555;
+}
+
+.download-btn {
+  display: block;
+  width: 100%;
+  background: #1e88e5;
+  color: #fff;
+  text-align: center;
+  padding: 14px;
+  border-radius: 12px;
+  text-decoration: none;
+  margin: 20px 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.poster-image {
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 20px;
+}
+
+.section-title {
+  font-size: 22px;
+  font-weight: 600;
+  margin-top: 30px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="app-box">
+  
+  <div class="app-header">
+    <img src="https://i.postimg.cc/pr9WYskF/icon-mac-512x512.png" class="app-logo" alt="App Logo">
+    <div class="app-title">WorkConnect BD</div>
+    <div class="app-sub">Driver & Labour Registration App</div>
+  </div>
+
+  <a href="https://hendrisarkar53-lab.github.io/Work-connect--bd/" 
+     class="download-btn">
+     📥 Download Now
+  </a>
+
+  <img src="https://i.postimg.cc/rFnWYq0c/file-00000000a34c720682ddd772e0788dd9.png" class="poster-image" alt="App Poster">
+
+  <div class="section-title">App Features</div>
+  <ul>
+    <li>✔ দ্রুত ড্রাইভার/লেবার রেজিস্ট্রেশন</li>
+    <li>✔ লোকেশন ভিত্তিক কাজ খোঁজা</li>
+    <li>✔ সহজ লগইন সিস্টেম</li>
+    <li>✔ রিয়েল-টাইম নোটিফিকেশন</li>
+    <li>✔ অ্যাকাউন্ট ম্যানেজমেন্ট</li>
+  </ul>
+
+  <div class="section-title">Why Choose WorkConnect BD?</div>
+  <p>বাংলাদেশের ড্রাইভার এবং লেবারদের জন্য সহজ প্ল্যাটফর্ম। প্রথম মাস ফ্রি — রেজিস্ট্রেশন ওপেন!</p>
+
+</div>
+
+</body>
+</html>
