@@ -1,1014 +1,121 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="bn">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Work Connect BD</title>
-<!-- Firebase compat -->
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+
+<!-- ⭐ Social Share Thumbnail -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Work Connect BD – Driver & Labour Finder App">
+<meta property="og:description" content="ড্রাইভার ও লেবার খোঁজার সবচেয়ে সহজ প্ল্যাটফর্ম। যেকোনো সময় দেখুন, কল করুন। প্রথম মাস একদম ফ্রি!">
+<meta property="og:image" content="https://i.ibb.co/4SFVtS1/workconnectbd-thumb.jpg">
+<meta property="og:url" content="https://hendrisarkar53-lab.github.io/Work-connect--bd/download.html">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Work Connect BD – Driver & Labour Finder App">
+<meta name="twitter:description" content="ড্রাইভার ও লেবার খোঁজার সবচেয়ে সহজ প্ল্যাটফর্ম। প্রথম মাস ফ্রি!">
+<meta name="twitter:image" content="https://i.ibb.co/4SFVtS1/workconnectbd-thumb.jpg">
 
 <style>
-:root{
-  --primary:#0d6efd;
-  --muted:#6c757d;
-  --bg:#f3f6fb;
-  --card:#fff;
-  --radius:12px;
-  --shadow:0 8px 24px rgba(13,110,253,0.06);
+body {
+  background:#f2f2f2;
+  padding:15px;
+  font-family:'Poppins',sans-serif;
 }
-*{box-sizing:border-box}
-body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;background:var(--bg);color:#111;-webkit-font-smoothing:antialiased;transition:background .25s,color .25s}
-body.light{background:#fff}
 
-/* Dark fullscreen black mode (when user toggles) */
-body.dark{
-  --bg:#000;
-  --card:#111;
-  --muted:#bdbdbd;
-  background:#000;
-  color:#fff;
+.app-box {
+  max-width: 800px;
+  margin: auto;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 18px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.15);
 }
-/* card adjustments in dark */
-body.dark .card,
-body.dark .inline-notice,
-body.dark .form,
-body.dark .form-page .card{
-  background: #111;
+
+.app-header {
+  text-align: center;
+}
+
+.app-logo {
+  width: 120px;
+  border-radius: 26px;
+}
+
+.app-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+.app-sub {
+  font-size: 16px;
+  color: #555;
+}
+
+.download-btn {
+  display: flex;
+  justify-content: center;   /* center text & icon */
+  align-items: center;
+  width: 90%;                /* perfect width on all devices */
+  max-width: 500px;          /* maintain beautiful shape */
+  margin: 20px auto;         /* ALWAYS CENTER */
+  background: #1e88e5;
   color: #fff;
-  box-shadow: 0 8px 30px rgba(255,255,255,0.02);
-}
-body.dark input, body.dark textarea, body.dark select {
-  background:#222;color:#fff;border:1px solid #333;
-}
-
-/* Topbar */
-.topbar{
-  position:fixed;left:0;right:0;top:0;
-  height:52px;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 12px;z-index:3000;
-}
-.title{font-weight:700;font-size:15px}
-.menu-btn{font-size:20px;background:transparent;border:none;color:#fff;cursor:pointer;padding:6px}
-
-/* Theme shadow button */
-.shadow-button{position:fixed;right:12px;top:60px;z-index:3500}
-.shadow-button img{width:36px;height:36px}
-
-/* Container */
-.container{max-width:980px;margin:64px auto;padding:12px}
-
-/* Card */
-.card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:12px;margin-bottom:12px}
-
-/* Driver list (and Labari list uses same styles) */
-.driver-list{
-    display:flex;
-    flex-direction:column;
-    gap:10px
+  padding: 14px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
 }
 
-.driver-item{
-    display:flex;
-    gap:12px;
-    align-items:flex-start;
-    padding:12px;
-    border-radius:10px;
-    background:linear-gradient(180deg,#fff,#fbfcff);
-    box-shadow:0 2px 6px rgba(0,0,0,0.03)
+.poster-image {
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 20px;
 }
 
-.driver-thumb{
-    width:64px;
-    height:64px;
-    border-radius:10px;
-    object-fit:cover;
-    background:#eee;
-    flex-shrink:0
+.section-title {
+  font-size: 22px;
+  font-weight: 600;
+  margin-top: 30px;
 }
-
-.driver-body{
-    flex:1;
-    min-width:0
-}
-
-.driver-name{
-    font-weight:700;
-    font-size:17px;
-    margin-bottom:4px;
-    white-space:normal;
-}
-
-.driver-meta{
-    color:var(--muted);
-    font-size:13px;
-    margin-bottom:6px;
-    white-space:normal;
-}
-
-.driver-balance{
-    font-weight:700;
-    color:#111;
-    font-size:14px;
-}
-
-.status{
-    display:inline-block;
-    padding:4px 8px;
-    border-radius:999px;
-    font-weight:700;
-    font-size:12px
-}
-
-.status.active{background:#e6ffed;color:green}
-.status.expired{background:#ffecec;color:#b30000}
-.status.blocked{background:#fff0f0;color:#b30000}
-
-/* Buttons */
-.row-actions{display:flex;gap:8px;align-items:center}
-.btn{background:var(--primary);color:#fff;border:none;padding:8px 10px;border-radius:8px;cursor:pointer;font-size:13px}
-.btn.ghost{background:transparent;color:var(--primary);border:1px solid var(--primary)}
-.btn.green{background:#28a745}
-.btn.danger{background:#b30000;color:#fff}
-
-/* Disabled call style */
-.disabledCall{opacity:0.6;pointer-events:none;}
-
-/* Drawer */
-#drawer{position:fixed;right:-340px;top:0;height:100%;width:320px;background:var(--card);box-shadow:-14px 0 30px rgba(0,0,0,0.08);padding:16px;transition:right .28s;z-index:2500}
-#drawer.show{right:0}
-#drawer button{width:100%;padding:12px;border-radius:8px;border:none;background:var(--primary);color:#fff;margin-bottom:8px;cursor:pointer}
-
-/* Centered Forms */
-.form{
-  position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:420px;max-width:94%;max-height:86%;overflow:auto;
-  background:var(--card);padding:14px;border-radius:12px;box-shadow:0 24px 60px rgba(0,0,0,0.16);z-index:2800;display:none;
-}
-.form.show{display:block}
-.form h3{margin-top:0}
-.form .close-x{float:right;background:#dc3545;color:#fff;border:none;border-radius:8px;padding:6px 8px;cursor:pointer}
-
-/* Inputs */
-input[type="text"], input[type="password"], input[type="number"], textarea, select{
-  width:100%;padding:10px;border-radius:8px;border:1px solid #e6e6e6;margin:8px 0;font-size:14px;background:#fff;
-}
-label{font-size:13px;color:var(--muted)}
-
-/* Deposit modal */
-#depositModal{width:420px;max-width:94%}
-
-/* Deposit history list */
-.history-list{max-height:240px;overflow:auto;background:#fafafa;padding:8px;border-radius:8px;border:1px solid #f0f0f0;font-size:13px}
-
-/* small screens */
-@media(max-width:560px){
-  .form{width:92%}
-  .driver-thumb{width:56px;height:56px}
-  #drawer{width:86%}
-  .row-actions{flex-direction:row}
-}
-
-/* Notice inline card */
-.inline-notice{background:#fff;border-radius:10px;padding:12px;margin-top:8px;box-shadow:0 6px 18px rgba(0,0,0,0.04);} 
-.inline-notice h4{margin:0 0 6px 0;color:var(--primary);} 
-
-/* small helper for small text */
-.small{font-size:13px;color:var(--muted)}
-
-/* Tiny avatar style used in admin-list (if any) */
-.avatar-sm{width:36px;height:36px;border-radius:8px;object-fit:cover;vertical-align:middle;margin-right:8px}
-
-/* Driver/Labor Switch */
-.switch-bar{margin-top:64px;display:flex;justify-content:center;gap:10px;padding:10px}
-.switch-btn{padding:10px 16px;border:none;border-radius:8px;background:#6c757d;color:#fff;font-weight:600;cursor:pointer}
-.switch-btn.active{background:#0d6efd}
 </style>
+
 </head>
 <body>
-<!-- Theme shadow button (top-right) -->
-<div class="shadow-button" onclick="toggleTheme()" title="Toggle theme">
-    <img id="icon" src="https://em-content.zobj.net/source/apple/354/last-quarter-moon-face_1f31c.png" alt="theme"/>
-</div><!-- Topbar -->
-<div class="topbar">
-  <div class="title">Driver & Passenger App</div>
-  <div>
-    <button class="menu-btn" onclick="toggleDrawer()">⋮</button>
-    <button id="topbarLoginBtn" class="btn" style="margin-left:8px; background:#dc3545; border:none;" onclick="topbarLoginLogout()">Login</button>
-    <button id="telegramBtn" class="btn" style="margin-left:8px; background:#0088cc; border:none;" onclick="openTelegram()">Telegram</button>
-  </div>
-</div>
 
-<!-- Driver / Labor Switch -->
-<div class="switch-bar">
-    <button id="driverTabBtn" class="switch-btn active" onclick="showDriverList()">🚖 ড্রাইভার তালিকা</button>
-    <button id="laborTabBtn" class="switch-btn" onclick="showLaborList()">🧑‍🏭 লেবার তালিকা</button>
-</div>
-
-<!-- 🔴 Firebase Controlled Ad Box -->
-<div id="homeAdBox" style="width:100%;padding:12px;background:#ffdddd;border-radius:10px;margin:10px 0;text-align:center;display:none;">
-    <div id="homeAdContent">লোড হচ্ছে...</div>
-</div>
-
-<!-- Drawer -->
-<div id="drawer" aria-hidden="true">
-  <button class="btn" onclick="openForm('login')">🔐 Driver Login</button>
-  <button class="btn" onclick="openForm('signup')">📝 Driver Signup</button>
-  <button class="btn" onclick="openForm('deposit')">💳 Deposit</button>
-  <button class="btn" onclick="showProfile()">👤 My Profile</button>
-  <button class="btn" onclick="reportToTelegram()">📨 Report to Telegram</button>
-  <button class="btn" onclick="doLogout()">🚪 Logout</button>
-  <div style="height:10px"></div>
-  <hr style="margin:8px 0" />
-  <button class="btn" onclick="openForm('labari')">📝 লেবারি ফর্ম পূরণ করুন</button>
-  <div style="height:10px"></div>
-  <button class="btn" onclick="openForm('laborDeposit')">💰 লেবার Deposit</button>
-  <button class="btn ghost" onclick="openForm('labariDepositList')">📋 লেবার Deposit রিপোর্ট</button>
-  <div style="font-size:13px;color:#666;margin-top:8px">আপনি লগইন করলে Deposit ও প্রোফাইল দেখতে পারবেন</div>
-</div>
-
-<!-- Main -->
-<div class="container">
-  <!-- INLINE NOTICE -->
-  <div class="card inline-notice" id="inlineNoticeCard" aria-live="polite">
-    <h4 id="inlineNoticeTitle">কোনো নোটিশ নেই</h4>
-    <div id="inlineNoticeMessage" style="font-size:15px;color:#333;">নোটিশ লোড হবে এখানে।</div>
-    <div id="inlineNoticeTime" class="small" style="margin-top:8px;color:#666"></div>
+<div class="app-box">
+  
+  <div class="app-header">
+    <img src="https://i.postimg.cc/pr9WYskF/icon-mac-512x512.png" class="app-logo" alt="App Logo">
+    <div class="app-title">WorkConnect BD</div>
+    <div class="app-sub">Driver & Labour Registration App</div>
   </div>
 
-  <div class="card">
-    <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
-      <div>
-        <div id="listTitle"><div style="font-weight:700;font-size:16px">সকল রেজিস্টারকৃত ড্রাইভার</div>
-        <div style="color:var(--muted);font-size:13px">প্যাসেঞ্জাররা এই তালিকা থেকে কল করতে পারবেন</div></div>
-      </div>
+  <!-- ✅ Correct APK Download Link -->
+  <a href="https://hendrisarkar53-lab.github.io/Work-connect--bd/WorkConnect%20BD.apk"
+     class="download-btn">
+     📥 Download Now
+  </a>
 
-      <!-- SEARCH UI -->
-      <div style="min-width:320px;display:flex;gap:8px;align-items:center" class="search-controls">
-        <input id="searchBox" placeholder="নাম/ফোন/পেশা টাইপ করুন (রিয়েল-টাইম)" oninput="renderFiltered()" />
-        <select id="searchField" title="Search field" onchange="renderFiltered()">
-          <option value="all">All</option>
-          <option value="name" selected>Name</option>
-          <option value="phone">Phone</option>
-          <option value="profession">Profession</option>
-        </select>
-      </div>
-    </div>
-  </div>
+  <img src="https://i.postimg.cc/rFnWYq0c/file-00000000a34c720682ddd772e0788dd9.png" class="poster-image" alt="App Poster">
 
-  <div class="card">
-    <div id="driversGrid" class="driver-list" aria-live="polite"></div>
-  </div>
+  <div class="section-title">App Features</div>
+  <ul>
+    <li>✔ দ্রুত ড্রাইভার/লেবার রেজিস্ট্রেশন</li>
+    <li>✔ লোকেশন ভিত্তিক কাজ খোঁজা</li>
+    <li>✔ সহজ লগইন সিস্টেম</li>
+    <li>✔ রিয়েল-টাইম নোটিফিকেশন</li>
+    <li>✔ অ্যাকাউন্ট ম্যানেজমেন্ট</li>
+  </ul>
+
+  <div class="section-title">Why Choose WorkConnect BD?</div>
+  <p>বাংলাদেশের ড্রাইভার এবং লেবারদের জন্য সহজ প্ল্যাটফর্ম। প্রথম মাস ফ্রি — রেজিস্ট্রেশন ওপেন!</p>
+
 </div>
 
-<!-- Deposit Modal -->
-<div id="depositModal" class="form" aria-hidden="true">
-  <button class="close-x" onclick="closeDepositModal()">✖</button>
-  <h3 id="dm_title">Deposit History</h3>
-  <div style="margin-top:6px"><strong id="dm_name"></strong> — <span id="dm_phone"></span></div>
-  <div style="margin-top:8px"><strong>Total:</strong> ৳<span id="dm_total">0</span> &nbsp;|&nbsp; <strong>Last:</strong> ৳<span id="dm_last">0</span></div>
-  <table style="width:100%;margin-top:8px;border-collapse:collapse;">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Amount</th>
-        <th>Date</th>
-        <th>Txn ID</th>
-      </tr>
-    </thead>
-    <tbody id="dm_list" style="max-height:240px;overflow:auto;font-size:13px;">লোড হচ্ছে...</tbody>
-  </table>
-  <hr style="margin:12px 0" />
-  <h5>Add Deposit</h5>
-  <label>Amount (৳)</label>
-  <input id="dm_amount" type="number" placeholder="Amount" />
-  <label>Txn ID / Details</label>
-  <input id="dm_details" type="text" placeholder="Bkash Txn / notes" />
-  <div style="margin-top:10px;text-align:right">
-    <button class="btn" onclick="dm_addDeposit()">Add Deposit</button>
-  </div>
-</div>
-
-<!-- Signup Form -->
-<div id="signupForm" class="form" aria-hidden="true">
-  <button class="close-x" onclick="hideAllForms()">✖</button>
-  <h3>Driver Signup</h3>
-  <label>নাম</label><input id="su_name" type="text" />
-  <label>মোবাইল নম্বর</label><input id="su_phone" type="text" placeholder="017xxxxxxxx" />
-  <label>পাসওয়ার্ড</label><input id="su_pass" type="password" />
-  <label>ঠিকানা</label><input id="su_address" type="text" />
-  <label>গাড়ির নাম/নম্বর</label><input id="su_car" type="text" />
-  <label>প্রোফাইল ছবি (optional)</label><input id="su_photo" type="file" accept="image/*" />
-  <div style="margin-top:8px;text-align:right">
-    <button class="btn" onclick="submitSignup()">Sign Up</button>
-  </div>
-</div>
-
-<!-- Login Form -->
-<div id="loginForm" class="form" aria-hidden="true">
-  <button class="close-x" onclick="hideAllForms()">✖</button>
-  <h3>Driver Login</h3>
-  <label>মোবাইল নম্বর</label><input id="li_phone" type="text" placeholder="017xxxxxxxx" />
-  <label>পাসওয়ার্ড</label><input id="li_pass" type="password" />
-  <div style="margin-top:8px;text-align:right">
-    <button class="btn" onclick="submitLogin()">Login</button>
-  </div>
-</div>
-
-<!-- Profile -->
-<div id="profileForm" class="form" aria-hidden="true">
-  <button class="close-x" onclick="hideAllForms()">✖</button>
-  <h3 style="text-align:center">My Profile</h3>
-  <img id="pr_photo" src="" style="width:110px;height:110px;border-radius:12px;display:block;margin:8px auto;object-fit:cover;background:#f0f0f0"/>
-  <div style="font-size:14px;line-height:1.6">
-    <div><strong>নাম:</strong> <span id="pr_name"></span></div>
-    <div><strong>মোবাইল:</strong> <span id="pr_phone"></span></div>
-    <div><strong>ঠিকানা:</strong> <span id="pr_address"></span></div>
-    <div><strong>গাড়ি:</strong> <span id="pr_car"></span></div>
-    <div><strong>ব্যালেন্স:</strong> ৳<span id="pr_balance">0</span></div>
-    <div><strong>মেয়াদ:</strong> <span id="pr_days_left"></span></div>
-  </div>
-  <div style="margin-top:12px">
-    <h4>Deposit History</h4>
-    <div id="pr_deposit_history" class="history-list">লগইন করলে এখানে Deposit History দেখাবে</div>
-  </div>
-  <div style="margin-top:12px;text-align:center">
-    <button class="btn" onclick="hideAllForms()">Close</button>
-  </div>
-</div>
-
-<!-- Labari Form -->
-<div id="labariForm" class="form" aria-hidden="true">
-  <button class="close-x" onclick="hideAllForms()">✖</button>
-  <h3>লেবারি ফর্ম</h3>
-  <label>নাম</label><input id="lb_name" type="text" />
-  <label>মোবাইল</label><input id="lb_phone" type="text" placeholder="017xxxxxxxx" />
-  <label>ঠিকানা</label><input id="lb_address" type="text" />
-  <label>কাজের ধরণ / পেশা</label><input id="lb_job" type="text" placeholder="যেমন: রাজমিস্ত্রি, হেল퍼" />
-  <label>দৈনিক বেতন (৳)</label><input id="lb_wage" type="number" placeholder="দৈনিক বেতন" />
-  <label>বিস্তারিত</label><textarea id="lb_details"></textarea>
-  <label>প্রোফাইল ছবি (optional)</label><input id="lb_photo" type="file" accept="image/*" />
-  <div style="margin-top:10px;text-align:right">
-    <button class="btn" onclick="submitLabari()">Submit</button>
-  </div>
-</div>
-
-<!-- Labari List -->
-<div id="labariListForm" class="form" aria-hidden="true">
-  <button class="close-x" onclick="hideAllForms()">✖</button>
-  <h3>সকল লেবারের তালিকা</h3>
-  <div id="labariListContainer" class="driver-list" style="max-height:60vh;overflow:auto;min-width:320px;"></div>
-</div>
-
-<!-- Labor Deposit -->
-<div id="laborDepositForm" class="form" aria-hidden="true">
-  <button class="close-x" onclick="hideAllForms()">✖</button>
-  <h3>💰 লেবার Deposit</h3>
-  <label>লেবার নির্বাচন করুন</label>
-  <select id="ld_select"> <option value="">-- একটি লেবার নির্বাচন করুন --</option> </select>
-  <label>Amount (৳)</label> <input id="ld_amount" type="number" placeholder="Amount" />
-  <label>Txn ID / Details</label> <input id="ld_txn" type="text" placeholder="Bkash Txn / notes" />
-  <div style="margin-top:10px;text-align:right">
-    <button class="btn" onclick="submitLabariDeposit()">Submit Deposit</button>
-  </div>
-  <hr style="margin:10px 0">
-  <h4>লেবারের Deposit History</h4>
-  <div id="ld_history" class="history-list">কোনো লেবার সিলেক্ট করলে এখানে History দেখাবে</div>
-</div>
-
-<!-- Labari Deposit List (admin) -->
-<div id="labariDepositListForm" class="form" aria-hidden="true">
-  <button class="close-x" onclick="hideAllForms()">✖</button>
-  <h3>📋 সকল লেবার Deposit রিপোর্ট</h3>
-  <div id="labari_deposit_list" style="max-height:60vh;overflow:auto"></div>
-</div>
-
-<!-- Notice full page -->
-<div id="notice" class="form-page" aria-hidden="true" style="display:none; padding:20px">
-  <div class="card">
-    <h2>📢 সর্বশেষ নোটিশ</h2>
-    <div id="noticeBox" style="background:#fff;padding:15px;border-radius:10px;margin-top:15px;box-shadow:0 2px 5px rgba(0,0,0,0.2)">
-      <h3 id="noticeTitle" style="margin-bottom:10px; color:#0066ff;"></h3>
-      <p id="noticeMessage" style="font-size:16px; line-height:22px; color:#333;"></p>
-      <div id="noticeTime" class="small" style="margin-top:8px;color:#666"></div>
-    </div>
-  </div>
-</div>
-
-<script>
-/* =========================
-   CONFIG: Firebase & Telegram
-   ========================= */
-const FIREBASE_CONFIG = {
-  apiKey: "AIzaSyC42XSxmWaE0-z8YNDwzCrQPWeJSAKOQ8",
-  authDomain: "driver-connect-67b00.firebaseapp.com",
-  databaseURL: "https://driver-connect-67b00-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "driver-connect-67b00",
-  storageBucket: "driver-connect-67b00.appspot.com",
-  messagingSenderId: "441129111940",
-  appId: "1:441129111940:web:c69f42dbdfa9e413ca4dd1"
-};
-if(!firebase.apps.length){ firebase.initializeApp(FIREBASE_CONFIG); }
-const db = firebase.database();
-
-/* Telegram (optional) */
-const BOT_TOKEN = "8007248559:AAFXJ185Z9F5eYn1DtIVo0bsA74l8I8AMUI";
-const CHAT_ID  = "7254664466";
-async function sendTelegramMessage(text){
-  try{
-    const res = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-      method: "POST",
-      headers: {"Content-Type":"application/json"},
-      body: JSON.stringify({ chat_id: CHAT_ID, text: text, parse_mode: "HTML" })
-    });
-    return await res.json();
-  } catch(err){ console.error("Telegram Error:", err); return null; }
-}
-
-/* Safe TG hooks so missing functions don't break */
-if(typeof TG_DriverSignup !== 'function') window.TG_DriverSignup = function(){};
-if(typeof TG_DriverLogin !== 'function') window.TG_DriverLogin = function(){};
-if(typeof TG_DriverExpired !== 'function') window.TG_DriverExpired = function(){};
-if(typeof TG_LabariCreate !== 'function') window.TG_LabariCreate = function(){};
-if(typeof TG_LabariDeposit !== 'function') window.TG_LabariDeposit = function(){};
-
-/* Utility */
-function escapeHTML(s){ return String(s||'').replaceAll('<','&lt;').replaceAll('>','&gt;'); }
-function escapeHTMLPlain(s){ return String(s||'').replaceAll('<','').replaceAll('>',''); }
-function toDataURL(file){ return new Promise((res,rej)=>{ if(!file) return res(null); const r=new FileReader(); r.onload=()=>res(r.result); r.onerror=err=>rej(err); r.readAsDataURL(file); }); }
-
-/* Globals */
-let ALL_LABARI = {};
-let ALL_DRIVERS = {};
-let CURRENT_TAB = 'driver';
-
-/* -------------------------
-   Status computation + call protection
-   ------------------------- */
-function computeStatusFromItem(item){
-  if(!item) return { key:'expired', label:'Expired' };
-  if(item.adminBlocked) return { key:'blocked', label:'Blocked' };
-  const now = Date.now();
-  const expiry = Number(item.expiryDate || item.expiry || item.date || 0);
-  if(!expiry) return { key:'expired', label:'Expired' };
-  if(now > expiry) return { key:'expired', label:'Expired' };
-  return { key:'active', label:'Active' };
-}
-
-/* callPhone: centralised call handler */
-function callPhone(kind, key){
-  const store = (kind==='driver') ? ALL_DRIVERS : ALL_LABARI;
-  const item = store[key];
-  if(!item){ alert('নাম/ফোন পাওয়া যায়নি'); return; }
-  const status = computeStatusFromItem(item);
-  if(status.key === 'blocked' || status.key === 'expired'){
-    alert('এই প্রোফাইল ব্লক করা আছে — কল দেয়া যাবে না।');
-    return;
-  }
-  const phone = item.phone || '';
-  if(!phone) { alert('ফোন নম্বর নেই'); return; }
-  window.location.href = 'tel:' + encodeURI(phone);
-}
-
-/* checkExpiryAndBlock */
-async function checkExpiryAndBlock(){
-  try{
-    const now = Date.now();
-    Object.keys(ALL_DRIVERS||{}).forEach(key=>{
-      const d = ALL_DRIVERS[key];
-      if(!d) return;
-      const expiry = Number(d.expiryDate || d.expiry || d.date || 0) || (Number(d.startDate||0) + 30*24*60*60*1000);
-      if(now > expiry && d.status !== 'expired'){
-        db.ref('drivers/'+key).update({ status: 'expired' }).catch(()=>{});
-        if(typeof TG_DriverExpired === 'function') TG_DriverExpired(d.name, d.phone);
-      }
-    });
-    Object.keys(ALL_LABARI||{}).forEach(key=>{
-      const l = ALL_LABARI[key];
-      if(!l) return;
-      const expiry = Number(l.expiryDate || l.expiry || l.date || 0) || (Number(l.startDate||0) + 30*24*60*60*1000);
-      if(now > expiry && l.status !== 'expired'){
-        db.ref('labari/'+key).update({ status: 'expired' }).catch(()=>{});
-      }
-    });
-  }catch(e){ console.error('checkExpiryAndBlock err', e); }
-}
-
-/* -------------------------
-   UI helpers
-   ------------------------- */
-function toggleTheme(){ 
-  let body=document.body, icon=document.getElementById('icon'); 
-  body.classList.toggle('dark'); 
-  if(body.classList.contains('dark')) icon.src="https://em-content.zobj.net/source/apple/354/sun_2600-fe0f.png"; 
-  else icon.src="https://em-content.zobj.net/source/apple/354/last-quarter-moon-face_1f31c.png"; 
-}
-function toggleDrawer(){ document.getElementById('drawer').classList.toggle('show'); }
-function hideAllForms(){ 
-  document.querySelectorAll('.form').forEach(f=>f.classList.remove('show'));
-  document.querySelectorAll('.form-page').forEach(fp=>fp.style.display='none');
-  const dm=document.getElementById('depositModal'); if(dm) dm.classList.remove('show');
-  const dr=document.getElementById('drawer'); if(dr) dr.classList.remove('show');
-}
-function showPage(id){
-  hideAllForms();
-  const el=document.getElementById(id);
-  if(!el) return;
-  if(el.classList.contains('form')) { el.classList.add('show'); el.setAttribute('aria-hidden','false'); }
-  else { el.style.display='block'; el.setAttribute('aria-hidden','false'); }
-}
-
-/* openForm wrapper */
-const _prevOpenForm = window.openForm;
-window.openForm = function(name){
-  if(name === 'notice'){ loadNotice(); showPage('notice'); return; }
-  if(name === 'deposit'){ const phone=localStorage.getItem('dc_driver'); if(!phone){ alert('প্রথমে Login করুন'); return; } showDepositHistory(); document.getElementById('depositModal').classList.add('show'); return; }
-  if(name === 'laborDeposit'){ showPage('laborDepositForm'); renderLabariSelect(); return; }
-  if(name === 'labariDepositList'){ openLabariDepositList(); return; }
-  if(name === 'labariList'){ showPage('labariListForm'); return; }
-  if(typeof _prevOpenForm === 'function'){ _prevOpenForm(name); return; }
-  const f=document.getElementById(name+'Form'); if(f) f.classList.add('show');
-};
-
-/* openTelegram/report */
-function openTelegram(){ window.open("https://t.me/driverproblemservicecentre","_blank"); }
-function reportToTelegram(){ const phone = localStorage.getItem('dc_driver') || 'Guest'; sendTelegramMessage(`<b>Report from App</b>\n${phone} — Report`).catch(()=>{}); alert('Report sent to Telegram'); }
-
-/* topbar login/logout */
-function updateTopbarButton(){ const btn=document.getElementById('topbarLoginBtn'); btn && (btn.innerText=localStorage.getItem('dc_driver')?'Logout':'Login'); }
-function topbarLoginLogout(){ if(localStorage.getItem('dc_driver')) { doLogout(); updateTopbarButton(); } else openForm('login'); }
-window.addEventListener('load', updateTopbarButton);
-
-/* -------------------------
-   Drivers listener
-   ------------------------- */
-db.ref('drivers').on('value', snap=>{
-  ALL_DRIVERS = snap.val() || {};
-  try{ if(CURRENT_TAB==='driver') renderDriverList(ALL_DRIVERS); }catch(e){}
-  checkExpiryAndBlock();
-});
-
-/* -------------------------
-   Signup / Login / Logout / Profile
-   ------------------------- */
-async function submitSignup(){
-  const name=document.getElementById('su_name').value.trim();
-  const phone=document.getElementById('su_phone').value.trim();
-  const pass=document.getElementById('su_pass').value;
-  const address=document.getElementById('su_address').value.trim();
-  const car=document.getElementById('su_car').value.trim();
-  if(!name||!pass||!address||!car){ alert('সব ফিল্ড পূরণ করুন'); return; }
-  const snap=await db.ref('drivers/'+phone).once('value'); if(snap.exists()){ alert('এই ফোন নম্বর আগে থেকেই আছে'); return; }
-  const photoFile=document.getElementById('su_photo') ? document.getElementById('su_photo').files[0] : null;
-  const photoData=await toDataURL(photoFile);
-  const now=Date.now(); const expiry=now+30*24*60*60*1000;
-  const obj={ name, phone, password:pass, address, car, photoDataURL:photoData||null, depositAmount:0, startDate:now, expiryDate:expiry, status:'active', depositHistory:{} , adminBlocked:false, notifiedExpiry:false};
-  await db.ref('drivers/'+phone).set(obj);
-  TG_DriverSignup(obj);
-  alert('Signup সফল! এখন Login করুন।'); hideAllForms();
-}
-
-async function submitLogin(){
-  const phone=document.getElementById('li_phone').value.trim();
-  const pass=document.getElementById('li_pass').value;
-  if(!phone||!pass){ alert('ফোন এবং পাসওয়ার্ড দিন'); return; }
-  const snap=await db.ref('drivers/'+phone).once('value');
-  if(!snap.exists()){ alert('ড্রাইভার পাওয়া যায়নি'); return; }
-  const d=snap.val();
-  if(d.password!==pass){ alert('পাসওয়ার্ড ভুল'); return; }
-  localStorage.setItem('dc_driver', phone); alert('Login সফল'); hideAllForms(); await showProfile(); updateTopbarButton();
-  if(typeof TG_DriverLogin === 'function') TG_DriverLogin(phone, d.name);
-}
-
-function doLogout(){
-  const phone = localStorage.getItem('dc_driver');
-  if(phone){
-    db.ref('drivers/'+phone).once('value').then(snap=>{
-      const d = snap.val() || {};
-      sendTelegramMessage(`<b>Driver Logout</b>\nName: ${escapeHTMLPlain(d.name||'—')}\nPhone: ${escapeHTMLPlain(phone||'—')}`);
-    }).catch(()=>{});
-  }
-  localStorage.removeItem('dc_driver'); alert('লগআউট সফল'); hideAllForms(); updateTopbarButton();
-}
-
-async function showProfile(){
-  const phone=localStorage.getItem('dc_driver'); if(!phone){ alert('প্রথমে Login করুন'); return; }
-  const snap=await db.ref('drivers/'+phone).once('value'); if(!snap.exists()){ alert('ড্রাইভার পাওয়া যায়নি'); return; }
-  const d=snap.val(); hideAllForms(); const f=document.getElementById('profileForm'); if(f) f.classList.add('show');
-  document.getElementById('pr_name') && (document.getElementById('pr_name').innerText=d.name||'');
-  document.getElementById('pr_phone') && (document.getElementById('pr_phone').innerText=d.phone||'');
-  document.getElementById('pr_address') && (document.getElementById('pr_address').innerText=d.address||'');
-  document.getElementById('pr_car') && (document.getElementById('pr_car').innerText=d.car||'');
-  document.getElementById('pr_balance') && (document.getElementById('pr_balance').innerText=(d.depositAmount||0).toFixed(2));
-  document.getElementById('pr_photo') && (document.getElementById('pr_photo').src=d.photoDataURL||'https://via.placeholder.com/120');
-  const days = d.expiryDate ? Math.ceil((Number(d.expiryDate)-Date.now())/86400000) : '-';
-  document.getElementById('pr_days_left') && (document.getElementById('pr_days_left').innerText=(days>0?days+' দিন':'মেয়াদ শেষ'));
-  const histElem=document.getElementById('pr_deposit_history'); if(histElem) histElem.innerHTML='';
-  if(d.depositHistory) Object.values(d.depositHistory).forEach(tx=>{
-    const div=document.createElement('div');
-    const status=tx.pending?' (Pending)':'';
-    div.innerText=`${new Date(tx.date).toLocaleDateString()} — ৳${tx.amount} — ${tx.details||''}${status}`;
-    histElem.appendChild(div);
-  });
-}
-
-/* -------------------------
-   Deposit functions for drivers
-   ------------------------- */
-async function showDepositHistory(){ 
-    const phone = localStorage.getItem('dc_driver'); 
-    if(!phone){ alert('প্রথমে Login করুন'); return; }
-    const snap = await db.ref('drivers/'+phone).once('value'); 
-    if(!snap.exists()) return; 
-    const d = snap.val();
-    document.getElementById('dm_name').innerText = d.name || '';
-    document.getElementById('dm_phone').innerText = d.phone || '';
-    const histElem = document.getElementById('dm_list'); histElem.innerHTML = ''; 
-    let total = 0, last = 0;
-    const history = d.depositHistory || {}; 
-    const keys = Object.keys(history).sort((a,b)=>a-b); 
-    let index = 1;
-    keys.forEach(k => {
-        const tx = history[k]; total += Number(tx.amount||0); last = Number(tx.amount||0);
-        const tr = document.createElement('tr'); 
-        const dateStr = new Date(tx.date).toLocaleDateString();
-        const txnID = tx.details || k;
-        tr.innerHTML = `<td>${index}</td><td>৳${Number(tx.amount||0).toFixed(2)}</td><td>${dateStr}</td><td>${escapeHTML(txnID)}</td>`;
-        histElem.appendChild(tr); index++;
-    });
-    document.getElementById('dm_total') && (document.getElementById('dm_total').innerText = total.toFixed(2)); 
-    document.getElementById('dm_last') && (document.getElementById('dm_last').innerText = last.toFixed(2));
-}
-
-function closeDepositModal(){ document.getElementById('depositModal').classList.remove('show'); }
-
-async function dm_addDeposit(){ 
-  const phone=document.getElementById('dm_phone') ? document.getElementById('dm_phone').innerText.trim() : null; if(!phone) return; 
-  const amount=parseFloat(document.getElementById('dm_amount').value); if(!amount){ alert('Amount দিন'); return; } 
-  const details=document.getElementById('dm_details').value.trim(); 
-  const ref=db.ref('drivers/'+phone); const snap=await ref.once('value'); if(!snap.exists()) return; 
-  const d=snap.val(); const txid='tx_'+Date.now(); 
-  const tx={amount,details:details||txid,date:Date.now(),pending:true}; 
-  if(!d.depositHistory) d.depositHistory={}; d.depositHistory[txid]=tx; 
-  await ref.update({depositHistory:d.depositHistory, depositAmount:(Number(d.depositAmount||0)+amount)}); 
-  alert('Deposit যোগ হয়েছে (Pending)'); 
-  sendTelegramMessage(`<b>New Deposit Request</b>\nDriver: ${escapeHTMLPlain(d.name||'—')}\nPhone: ${escapeHTMLPlain(phone||'—')}\nAmount: ৳${amount}\nTxn: ${escapeHTMLPlain(details||txid)}`);
-  showDepositHistory();
-}
-
-/* -------------------------
-   Render Drivers & Labari + call safety
-   ------------------------- */
-function activateTab(type){
-    CURRENT_TAB = type;
-    document.getElementById('driverTabBtn').classList.toggle('active', type==='driver');
-    document.getElementById('laborTabBtn').classList.toggle('active', type==='labari');
-    const titleEl = document.getElementById('listTitle');
-    if(type==='driver'){
-      titleEl.innerHTML = '<div style="font-weight:700;font-size:16px">সকল রেজিস্টারকৃত ড্রাইভার</div><div style="color:var(--muted);font-size:13px">প্যাসেঞ্জাররা এই তালিকা থেকে কল করতে পারবেন</div>';
-      renderDriverList(ALL_DRIVERS);
-    } else {
-      titleEl.innerHTML = '<div style="font-weight:700;font-size:16px">সকল লেবারের তালিকা</div><div style="color:var(--muted);font-size:13px">এখান থেকে লেবার কল করা যাবে</div>';
-      renderLabariList(ALL_LABARI);
-    }
-}
-
-function showDriverList(){ activateTab('driver'); }
-function showLaborList(){ activateTab('labari'); }
-
-function renderDriverList(listData){
-    const container = document.getElementById("driversGrid");
-    container.innerHTML = "";
-    const keys = Object.keys(listData||{}).sort((a,b)=>b-a);
-    if(keys.length===0){ container.innerHTML = '<div style="padding:12px;color:#666">কোনো ড্রাইভার পাওয়া যায়নি।</div>'; return; }
-    keys.forEach(key=>{
-        const d = listData[key]; if(!d) return;
-        const statusObj = computeStatusFromItem(d);
-        const status = statusObj.key || 'active';
-        const statusLabel = statusObj.label || (status.charAt(0).toUpperCase()+status.slice(1));
-        const isDisabledCall = (status==='blocked' || status==='expired' || d.adminBlocked);
-        const item=document.createElement('div'); item.className='driver-item';
-        item.innerHTML = `<img class="driver-thumb" src="${d.photoDataURL||'https://via.placeholder.com/80'}" alt="photo" />
-          <div class="driver-body">
-            <div style="display:flex;justify-content:space-between;align-items:center">
-              <div style="min-width:0">
-                <div class="driver-name">${escapeHTML(d.name||'No Name')}</div>
-                <div class="driver-meta">${escapeHTML(d.address||d.phone||'')}</div>
-              </div>
-              <div style="text-align:right">
-                <div class="driver-balance">৳${Number(d.depositAmount||d.balance||0).toFixed(2)}</div>
-                <div style="margin-top:6px"><span class="status ${status}">${escapeHTML(statusLabel)}</span></div>
-              </div>
-            </div>
-            <div style="margin-top:10px;display:flex;gap:8px;align-items:center">
-              <button class="btn ${isDisabledCall?'disabledCall':''}" onclick="callPhone('driver','${key}')">📞 কল</button>
-              <button class="btn ghost" onclick="openDriverDepositModal('${key}')">💰 Deposit History</button>
-            </div>
-            <div style="margin-top:8px;color:var(--muted);font-size:13px">${escapeHTML(d.car||'')}</div>
-          </div>`;
-        container.appendChild(item);
-    });
-}
-
-function renderLabariList(listData){
-    const container = document.getElementById("driversGrid");
-    container.innerHTML = "";
-    const keys = Object.keys(listData||{}).sort((a,b)=>b-a);
-    if(keys.length===0){ container.innerHTML = '<div style="padding:12px;color:#666">কোনো লেবারি পাওয়া যায়নি।</div>'; return; }
-    keys.forEach(k=>{
-        const lb = listData[k]; if(!lb) return;
-        const statusObj = computeStatusFromItem(lb);
-        const status = statusObj.key || 'active';
-        const statusLabel = statusObj.label || (status.charAt(0).toUpperCase()+status.slice(1));
-        const isDisabledCall = (status==='blocked' || status==='expired' || lb.adminBlocked);
-        const item=document.createElement('div'); item.className='driver-item';
-        item.innerHTML = `<img class="driver-thumb" src="${lb.photoDataURL||'https://via.placeholder.com/80'}" alt="photo" />
-          <div class="driver-body">
-            <div style="display:flex;justify-content:space-between;align-items:center">
-              <div style="min-width:0">
-                <div class="driver-name">${escapeHTML(lb.name||'No Name')}</div>
-                <div class="driver-meta">${escapeHTML(lb.job||'')} • ${escapeHTML(lb.address||'')}</div>
-              </div>
-              <div style="text-align:right">
-                <div class="driver-balance">${lb.wage?('৳'+Number(lb.wage).toFixed(2)):' '}</div>
-                <div style="margin-top:6px"><span class="status ${status}">${escapeHTML(statusLabel)}</span></div>
-              </div>
-            </div>
-            <div style="margin-top:10px;display:flex;gap:8px;align-items:center">
-              <button class="btn ${isDisabledCall?'disabledCall':''}" onclick="callPhone('labari','${k}')">📞 কল</button>
-              <button class="btn ghost" onclick="openLabariDepositModal('${k}')">💰 Deposit</button>
-            </div>
-            <div style="margin-top:8px;color:var(--muted);font-size:13px">${escapeHTML(lb.details||'')}</div>
-          </div>`;
-        container.appendChild(item);
-    });
-}
-
-/* =========================
-   IMPORTANT: Search logic (REAL-TIME)
-=========================*/
-function renderFiltered(){
-  const qRaw = (document.getElementById('searchBox').value||'').trim();
-  const q = qRaw.toLowerCase();
-  const field = (document.getElementById('searchField').value || 'all');
-  if(CURRENT_TAB === 'driver'){
-    if(!q) { return renderDriverList(ALL_DRIVERS); }
-    const filtered = {};
-    Object.keys(ALL_DRIVERS||{}).forEach(k=>{
-      const v = ALL_DRIVERS[k];
-      if(!v) return;
-      const name = (v.name||'').toLowerCase();
-      const phone = (v.phone||'').toLowerCase();
-      const car = (v.car||'').toLowerCase();
-      const addr = (v.address||'').toLowerCase();
-      let match = false;
-      if(field === 'all'){
-        match = name.includes(q) || phone.includes(q) || car.includes(q) || addr.includes(q);
-      } else if(field === 'name'){
-        match = name.includes(q);
-      } else if(field === 'phone'){
-        match = phone.includes(q);
-      } else if(field === 'profession'){
-        match = car.includes(q);
-      }
-      if(match) filtered[k] = v;
-    });
-    renderDriverList(filtered);
-  } else {
-    if(!q) { return renderLabariList(ALL_LABARI); }
-    const filtered = {};
-    Object.keys(ALL_LABARI||{}).forEach(k=>{
-      const v = ALL_LABARI[k];
-      if(!v) return;
-      const name = (v.name||'').toLowerCase();
-      const phone = (v.phone||'').toLowerCase();
-      const job = (v.job||'').toLowerCase();
-      const addr = (v.address||'').toLowerCase();
-      let match = false;
-      if(field === 'all'){
-        match = name.includes(q) || phone.includes(q) || job.includes(q) || addr.includes(q);
-      } else if(field === 'name'){
-        match = name.includes(q);
-      } else if(field === 'phone'){
-        match = phone.includes(q);
-      } else if(field === 'profession'){
-        match = job.includes(q);
-      }
-      if(match) filtered[k] = v;
-    });
-    renderLabariList(filtered);
-  }
-}
-
-/* open driver deposit modal (show history) */
-async function openDriverDepositModal(key){
-  const snap = await db.ref('drivers/'+key).once('value');
-  if(!snap.exists()){ alert('ড্রাইভার পাওয়া যায়নি'); return; }
-  const d = snap.val();
-  showPage('depositModal');
-  document.getElementById('dm_name').innerText = d.name||'';
-  document.getElementById('dm_phone').innerText = d.phone||'';
-  // populate history table
-  const histElem = document.getElementById('dm_list'); histElem.innerHTML = '';
-  const history = d.depositHistory || {};
-  const keys = Object.keys(history).sort((a,b)=>a-b);
-  let total=0,last=0,index=1;
-  keys.forEach(k=>{ const tx = history[k]; total+=Number(tx.amount||0); last=Number(tx.amount||0); const tr=document.createElement('tr'); tr.innerHTML = `<td>${index}</td><td>৳${Number(tx.amount||0).toFixed(2)}</td><td>${new Date(tx.date).toLocaleDateString()}</td><td>${escapeHTML(tx.details||k)}</td>`; histElem.appendChild(tr); index++; });
-  document.getElementById('dm_total').innerText = total.toFixed(2);
-  document.getElementById('dm_last').innerText = last.toFixed(2);
-}
-
-/* -------------------------
-   LABARI functions + deposit logic
-   ------------------------- */
-db.ref('labari').on('value', snap=>{
-  ALL_LABARI = snap.val() || {};
-  try{ if(CURRENT_TAB==='labari') renderLabariList(ALL_LABARI); }catch(e){}
-  try{ renderLabariSelect(); }catch(e){}
-  checkExpiryAndBlock();
-});
-
-async function submitLabari(){
-  const name = document.getElementById('lb_name').value.trim();
-  const phone = document.getElementById('lb_phone').value.trim();
-  const address = document.getElementById('lb_address').value.trim();
-  const job = document.getElementById('lb_job').value.trim();
-  const wage = parseFloat(document.getElementById('lb_wage').value) || 0;
-  const details = document.getElementById('lb_details') ? document.getElementById('lb_details').value.trim() : '';
-  const photoFile = document.getElementById('lb_photo') ? document.getElementById('lb_photo').files[0] : null;
-  if(!name || !phone){ alert('নাম এবং মোবাইল আবশ্যক'); return; }
-  const photoData = await toDataURL(photoFile);
-  const key = 'labari_'+Date.now();
-  const now = Date.now();
-  const expiry = now + 30*24*60*60*1000; // 30 days in ms
-  const obj = { 
-    name, phone, address, job, wage, details, photoDataURL:photoData||null, 
-    startDate: now, expiryDate: expiry, status: 'active', date: now,
-    balance: 0, depositHistory: {}, adminBlocked:false
-  };
-  await db.ref('labari/'+key).set(obj);
-  if(typeof TG_LabariCreate === 'function') TG_LabariCreate({ ...obj, key });
-  alert('লেবারি জমা হয়েছে!');
-  ['lb_name','lb_phone','lb_address','lb_job','lb_wage','lb_details'].forEach(id=>{ const el=document.getElementById(id); if(el) el.value=''; });
-  if(document.getElementById('lb_photo')) document.getElementById('lb_photo').value='';
-  hideAllForms();
-}
-
-function renderLabariSelect(){
-  const sel = document.getElementById('ld_select');
-  if(!sel) return;
-  sel.innerHTML = '<option value="">-- একটি লেবার নির্বাচন করুন --</option>';
-  const keys = Object.keys(ALL_LABARI || {}).sort((a,b)=>b-a);
-  keys.forEach(k=>{
-    const lb = ALL_LABARI[k];
-    if(!lb) return;
-    const title = `${lb.name || 'নাম নেই'} — ${lb.phone || ''}`;
-    const opt = document.createElement('option'); opt.value = k; opt.innerText = title; sel.appendChild(opt);
-  });
-}
-
-function showSelectedLabariHistory(){
-  const key = document.getElementById('ld_select') ? document.getElementById('ld_select').value : '';
-  const el = document.getElementById('ld_history'); if(!el) return;
-  el.innerHTML = '';
-  if(!key){ el.innerText = 'একটি লেবার সিলেক্ট করুন'; return; }
-  const lb = ALL_LABARI[key]; if(!lb){ el.innerText = 'লেবার পাওয়া যায়নি'; return; }
-  const hist = lb.depositHistory || {};
-  const ks = Object.keys(hist).sort((a,b)=>a-b);
-  if(ks.length===0){ el.innerText = 'কোনো Deposit রেকর্ড নেই'; return; }
-  ks.forEach(k=>{
-    const tx = hist[k];
-    const d = document.createElement('div');
-    d.style.padding = '8px'; d.style.borderBottom = '1px solid #eee';
-    d.innerHTML = `<strong>৳${tx.amount}</strong> — ${new Date(tx.date).toLocaleString()}<br><small>${escapeHTML(tx.details||k)} ${tx.pending?'<em>(Pending)</em>':''}</small>`;
-    el.appendChild(d);
-  });
-}
-
-async function submitLabariDeposit(){
-  const key = document.getElementById('ld_select').value;
-  const amount = parseFloat(document.getElementById('ld_amount').value);
-  const txn = document.getElementById('ld_txn').value.trim();
-  if(!key){ alert('একটি লেবার নির্বাচন করুন'); return; }
-  if(!amount || amount <= 0){ alert('সঠিক Amount দিন'); return; }
-  const ref = db.ref('labari/'+key);
-  const snap = await ref.once('value');
-  if(!snap.exists()){ alert('লেবার পাওয়া যায়নি'); return; }
-  const lb = snap.val();
-  const txid = 'ldtx_'+Date.now();
-  const tx = { amount: amount, details: txn || txid, date: Date.now(), pending: true };
-  const depositHistory = lb.depositHistory || {};
-  depositHistory[txid] = tx;
-  const newBalance = (Number(lb.balance || 0) + amount);
-  await ref.update({ depositHistory: depositHistory, balance: newBalance });
-  alert('লেবারের মধ্যে Deposit যুক্ত হয়েছে (Pending)।');
-  if(typeof TG_LabariDeposit === 'function') TG_LabariDeposit(lb.name || '—', lb.phone || '—', amount, txn || txid);
-  renderLabariSelect();
-  showSelectedLabariHistory();
-}
-
-async function openLabariDepositModal(key){
-  const lbSnap = await db.ref('labari/'+key).once('value');
-  if(!lbSnap.exists()) { alert('লেবারি পাওয়া যায়নি'); return; }
-  const lb = lbSnap.val();
-  showPage('laborDepositForm');
-  renderLabariSelect();
-  setTimeout(()=>{ const sel = document.getElementById('ld_select'); if(sel){ sel.value = key; showSelectedLabariHistory(); } }, 250);
-}
-
-/* Admin: load all labari deposits into a list */
-async function loadAllLabariDeposits(){
-  const container = document.getElementById('labari_deposit_list'); if(!container) return;
-  container.innerHTML = '';
-  const keys = Object.keys(ALL_LABARI || {}).sort((a,b)=>b-a);
-  let html = '';
-  keys.forEach(k=>{
-    const lb = ALL_LABARI[k]; if(!lb) return;
-    const hist = lb.depositHistory || {};
-    const hkeys = Object.keys(hist).sort((a,b)=>b-a);
-    if(hkeys.length===0) return;
-    html += `<div style="padding:8px;border-bottom:1px solid #eee"><strong>${escapeHTML(lb.name||'—')} — ${escapeHTML(lb.phone||'—')}</strong><br/>Balance: ৳${Number(lb.balance||0).toFixed(2)}<div style="margin-top:6px">`;
-    hkeys.forEach(hk=>{
-      const tx = hist[hk];
-      html += `<div style="padding:6px 0;border-top:1px dashed #f0f0f0">৳${tx.amount} — ${new Date(tx.date).toLocaleString()} — ${escapeHTML(tx.details||hk)} ${tx.pending?'<em>(Pending)</em>':''}</div>`;
-    });
-    html += `</div></div>`;
-  });
-  container.innerHTML = html || '<div style="padding:12px;color:#666">কোনো লেবার ডিপোজিট রেকর্ড পাওয়া যায়নি।</div>';
-}
-
-/* Hook: when laborDeposit form opens, render select */
-document.getElementById && document.addEventListener('click', function(e){
-  if(e.target && e.target.closest && e.target.closest('#drawer')) {
-    setTimeout(()=>{ if(document.getElementById('laborDepositForm') && document.getElementById('laborDepositForm').classList.contains('show')) { renderLabariSelect(); } }, 120);
-  }
-});
-document.addEventListener('change', function(e){ if(e.target && e.target.id === 'ld_select') showSelectedLabariHistory(); });
-window.openLabariDepositList = function(){ hideAllForms(); loadAllLabariDeposits(); document.getElementById('labariDepositListForm').classList.add('show'); };
-
-/* ======================
-NOTICE: load & listen from Firebase /notice
-====================== */
-let noticeRef = null;
-function loadNotice(){
-  try{
-    if(noticeRef) return;
-    noticeRef = db.ref('notice');
-    noticeRef.on('value', snap=>{
-      const elT = document.getElementById('noticeTitle');
-      const elM = document.getElementById('noticeMessage');
-      const elTime = document.getElementById('noticeTime');
-      const inlineT = document.getElementById('inlineNoticeTitle');
-      const inlineM = document.getElementById('inlineNoticeMessage');
-      const inlineTime = document.getElementById('inlineNoticeTime');
-      if(!inlineT || !inlineM) return;
-      if(!snap.exists()){
-        inlineT.innerText = 'কোনো নোটিশ নেই';
-        inlineM.innerText = '';
-        inlineTime.innerText = '';
-        if(elT && elM){ elT.innerText='কোনো নোটিশ নেই'; elM.innerText=''; elTime.innerText=''; }
-        return;
-      }
-      const data = snap.val();
-      inlineT.innerText = data.title || 'নোটিশ';
-      inlineM.innerText = data.message || '';
-      if(data.time) inlineTime.innerText = 'সময়: ' + data.time; else inlineTime.innerText = data.date ? ('সময়: ' + new Date(Number(data.date)).toLocaleString()) : '';
-      if(elT && elM){ elT.innerText = data.title || 'নোটিশ'; elM.innerText = data.message || ''; if(data.time) elTime.innerText = 'সময়: ' + data.time; else elTime.innerText = data.date ? ('সময়: ' + new Date(Number(data.date)).toLocaleString()) : ''; }
-    });
-  }catch(e){ console.error('loadNotice error', e); }
-}
-
-async function fetchNoticeOnce(){
-  const snap = await db.ref('notice').once('value');
-  if(!snap.exists()) return;
-  const data = snap.val();
-  document.getElementById('noticeTitle') && (document.getElementById('noticeTitle').innerText = data.title || 'নোটিশ');
-  document.getElementById('noticeMessage') && (document.getElementById('noticeMessage').innerText = data.message || '');
-  document.getElementById('noticeTime') && (document.getElementById('noticeTime').innerText = data.time || '');
-  document.getElementById('inlineNoticeTitle') && (document.getElementById('inlineNoticeTitle').innerText = data.title || 'নোটিশ');
-  document.getElementById('inlineNoticeMessage') && (document.getElementById('inlineNoticeMessage').innerText = data.message || '');
-}
-
-/* Start listening to notice immediately */
-loadNotice();
-
-/* Small UX: Esc to close */
-document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') hideAllForms(); });
-
-/* Initial hooks */
-updateTopbarButton();
-setTimeout(()=>{ renderLabariSelect(); loadHomeAd(); }, 250);
-window.addEventListener('load', ()=>{ showDriverList(); });
-
-/* Ad loader */
-function loadHomeAd(){
-    db.ref("ads/homeAd").once("value").then(snap=>{
-        if(snap.exists()){
-            document.getElementById("homeAdBox").style.display = "block";
-            document.getElementById("homeAdContent").innerHTML = snap.val();
-        } else {
-            document.getElementById("homeAdBox").style.display = "none";
-        }
-    }).catch(()=>{});
-}
-</script>
 </body>
 </html>
